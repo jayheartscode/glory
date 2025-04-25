@@ -55,14 +55,14 @@ class Users(commands.Cog):
    
   @commands.Cog.listener('on_member_remove')
   async def booster_left(self, member: discord.Member): 
-      if member.guild.id == 952161067033849919:
+      if member.guild.id == 1218021824353406988:
          if member.guild.premium_subscriber_role in member.roles: 
             check = await self.bot.db.fetchrow("SELECT * FROM donor WHERE user_id = {}".format(member.id))
             if check is not None: await self.bot.db.execute("DELETE FROM donor WHERE user_id = {}".format(member.id))                 
 
   @commands.Cog.listener('on_member_update')
   async def booster_unboosted(self, before: discord.Member, after: discord.Member): 
-    if before.guild.id == 952161067033849919:
+    if before.guild.id == 1218021824353406988:
        if before.guild.premium_subscriber_role in before.roles and not before.guild.premium_subscriber_role in after.roles:
          check = await self.bot.db.fetchrow("SELECT * FROM donor WHERE user_id = {}".format(before.id))
          if check is not None: return await self.bot.db.execute("DELETE FROM donor WHERE user_id = {}".format(before.id))   
