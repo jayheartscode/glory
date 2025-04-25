@@ -32,7 +32,7 @@ class Messages(commands.Cog):
     @commands.Cog.listener('on_message')
     async def boost_listener(self, message: discord.Message): 
      if "MessageType.premium_guild" in str(message.type):
-      if message.guild.id == 952161067033849919: 
+      if message.guild.id == 1218021824353406988: 
        member = message.author
        check = await self.bot.db.fetchrow("SELECT * FROM donor WHERE user_id = $1", member.id)
        if check: return 
@@ -142,7 +142,7 @@ class Messages(commands.Cog):
 
      che = await self.bot.db.fetchrow("SELECT * from afk where guild_id = $1 AND user_id = $2", message.guild.id, message.author.id) 
      if che:
-      embed = discord.Embed(color=self.bot.color, description=f"<a:wave:1020721034934104074> Welcome back **{message.author}**! You were AFK since **{self.bot.ext.relative_time(datetime.datetime.fromtimestamp(int(che['time'])))}**")
+      embed = discord.Embed(color=self.bot.color, description=f"👋 Welcome back **{message.author}**! You were AFK since **{self.bot.ext.relative_time(datetime.datetime.fromtimestamp(int(che['time'])))}**")
       await message.reply(embed=embed)
       await self.bot.db.execute("DELETE FROM afk WHERE guild_id = $1 AND user_id = $2", message.guild.id, message.author.id)    
 
