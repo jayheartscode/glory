@@ -176,7 +176,7 @@ class CommandClient(commands.AutoShardedBot):
             help_command=HelpCommand(), strip_after_prefix=True, 
             activity=discord.Activity(name="pretend.space", 
             type=discord.ActivityType.competing), 
-            owner_ids=[371224177186963460, 859646668672598017, 461914901624127489, 352190010998390796]
+            owner_ids=[961016602944483459, 1355597819955777576]
         )
         self.uptime = time.time()
         self.persistent_views_added = False
@@ -185,12 +185,12 @@ class CommandClient(commands.AutoShardedBot):
         self.cogs_loaded=False
         self.google_api = "AIzaSyDPrFJ8oxPP5YWM82vqCaLq8F6ZdlSGsBo" 
         self.color = 0x6d827d
-        self.yes = "<:check:1083455835189022791>"
-        self.no = "<:stop:1083455877450834041>"
-        self.warning = "<:warning:1083455925798580246>"
-        self.left = "<:left:1018156480991612999>"
-        self.right = "<:right:1018156484170883154>"
-        self.goto = "<:filter:1039235211789078628>"
+        self.yes = "<:glory_approve:1218030140575977474>"
+        self.no = "<:glory_deny:1218030152567750677>"
+        self.warning = "<:glory_warning:1218030144346656950>"
+        self.left = "<:glory_previous:1316974948174135337>"
+        self.right = "<:glory_next:1316974950292394004>"
+        self.goto = "<:glory_navigate:1316974952460714034>"
         self.proxy_url = "http://dtgrlmjf-rotate:p0bl5bes07qp@p.webshare.io:80"
         self.m_cd=commands.CooldownMapping.from_cooldown(1,5,commands.BucketType.member)
         self.c_cd=commands.CooldownMapping.from_cooldown(1,5,commands.BucketType.channel)
@@ -272,7 +272,7 @@ class CommandClient(commands.AutoShardedBot):
 
     async def guild_change(self, mes: str, guild: discord.Guild) -> discord.Message: 
      return
-     channel = self.get_channel(1040684559487995964)
+     channel = self.get_channel(1358157145987874846)
      try: await channel.send(embed=discord.Embed(color=self.color, description=f"{mes} **{guild.name}** owned by **{guild.owner}** with **{guild.member_count}** members"))  
      except: pass
 
@@ -401,4 +401,4 @@ async def disabled_command(ctx: commands.Context):
 
 if __name__ == '__main__':
     #asyncio.run(botrun())
-    bot.run(token)
+    bot.run(MTM2MzY0MDkyMDQ2NTA4MDQwMA.GXPtIp.JPBfrf4ah5QgbHnsSWdRng5-kI32bodcDniwCk)
