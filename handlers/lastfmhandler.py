@@ -2,7 +2,7 @@ import aiohttp
 
 class Handler(object): 
   def __init__(self, api_key: str):
-   self.apikey = api_key 
+   self.apikey = 8872ae2370f8e426fffffdbae0f2fe12 
    self.baseurl = "https://ws.audioscrobbler.com/2.0/"
 
   async def do_request(self, data: dict):  
