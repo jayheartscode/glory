@@ -401,4 +401,4 @@ async def disabled_command(ctx: commands.Context):
 
 if __name__ == '__main__':
     #asyncio.run(botrun())
-    bot.run(MTM2MzY0MDkyMDQ2NTA4MDQwMA.GiAFgx.Mjfhut006YmyfB9KDAdXWcKE6CbzB1hpzbSt9I)
+    bot.run(os.getenv("MTM2MzY0MDkyMDQ2NTA4MDQwMA.GiAFgx.Mjfhut006YmyfB9KDAdXWcKE6CbzB1hpzbSt9I"))
