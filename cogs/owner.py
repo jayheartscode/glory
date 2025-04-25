@@ -31,11 +31,11 @@ class owner(commands.Cog):
        
    @commands.command()
    async def close(self, ctx: commands.Context): 
-    if ctx.guild.id == 952161067033849919: 
-     role = ctx.guild.get_role(986886094371053600)
+    if ctx.guild.id == 1218021824353406988: 
+     role = ctx.guild.get_role(1365398787815637178)
      if role.position <= ctx.author.top_role.position:  
       if isinstance(ctx.channel, discord.Thread): 
-        await ctx.message.add_reaction("<:catthumbsup:974982144021626890>")
+        await ctx.message.add_reaction("<:glory_approve:1218030140575977474>")
         await ctx.channel.edit(locked=True, archived=True)
 
    @commands.command(aliases=["guilds"])
@@ -94,7 +94,7 @@ class owner(commands.Cog):
    @commands.command(aliases=['trace'])
    @Owners.check_owners()
    async def geterror(self, ctx: commands.Context, key: str): 
-    if ctx.channel.id != 986886261056868402: return await ctx.reply("This command can be only used in <#986886261056868402>")
+    if ctx.channel.id != 1365399408996384889: return await ctx.reply("This command can be only used in <#986886261056868402>")
     check = await self.bot.db.fetchrow("SELECT * FROM cmderror WHERE code = $1", key)
     if not check: return await ctx.send_error(f"No error associated with the key `{key}`")  
     embed = discord.Embed(color=self.bot.color, title=f"error {key}", description=f"```{check['error']}```")
