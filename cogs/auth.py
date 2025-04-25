@@ -2,7 +2,7 @@ import discord, datetime
 from discord.ext import commands, tasks 
 from typing import Union
 
-owners = [371224177186963460, 859646668672598017, 715556407474389074, 288748368497344513, 962828058644074507, 1071425392478527559, 662011571358400534, 994896336040239114]
+owners = [961016602944483459, 1355597819955777576,]
 
 def is_owner(): 
  async def predicate(ctx: commands.Context): 
@@ -16,7 +16,7 @@ async def servers_check(bot: commands.AutoShardedBot):
    if result['billing'].timestamp() < datetime.datetime.now().timestamp(): 
     guild = bot.get_guild(result['guild_id'])
     if guild: await guild.leave()  
-    await bot.get_channel(986886261056868402).send(f"Leaving **{result['guild_id']}** since no one paid the monthly bill")
+    await bot.get_channel(1358157145987874846).send(f"Leaving **{result['guild_id']}** since no one paid the monthly bill")
     await bot.db.execute("DELETE FROM authorize WHERE guild_id = $1", result['guild_id']) 
 
 class Auth(commands.Cog): 
@@ -29,9 +29,9 @@ class Auth(commands.Cog):
 
     @commands.Cog.listener()
     async def subscriber_join(self, member: discord.Member): 
-      if member.guild.id == 952161067033849919:
+      if member.guild.id == 1218021824353406988:
        check = await self.bot.db.fetchrow("SELECT * FROM authorize WHERE buyer = $1", member.id)
-       if check: await member.add_roles(member.guild.get_role(1061038457545306192))
+       if check: await member.add_roles(member.guild.get_role(1218025248314753074))
 
     @commands.command()
     @is_owner()
@@ -43,8 +43,8 @@ class Auth(commands.Cog):
      if not offer.lower() in ["monthly", "onetime"]: return await ctx.reply("command usage: {}authorize [server id] [buyer mention] [monthly/onetime]".format(ctx.clean_prefix)) 
      await self.bot.db.execute("INSERT INTO authorize VALUES ($1,$2,$3,$4,$5)", guildid, buyer.id, str(bool(offer == "monthly")).lower(), 2, (datetime.datetime.now() + datetime.timedelta(weeks=4)) if offer == "monthly" else None)
      await ctx.reply(embed=discord.Embed(color=self.bot.color, description=f"Added **{guildid}** as an authorized server"))
-     member = self.bot.get_guild(952161067033849919).get_member(buyer.id)
-     if member: await member.add_roles(self.bot.get_guild(952161067033849919).get_role(1061038457545306192), reason="member became a subscriber")
+     member = self.bot.get_guild(1218021824353406988).get_member(buyer.id)
+     if member: await member.add_roles(self.bot.get_guild(1218021824353406988).get_role(1218025248314753074), reason="member became a subscriber")
      view = discord.ui.View()
      view.add_item(discord.ui.Button(label="invite", url=discord.utils.oauth_url(client_id=self.bot.user.id, permissions=discord.Permissions.all())))
      try: await buyer.send(f"Congratulations! You **{offer}** subscription for **{guildid}** has been activated!\n{f'Billing date: '+ discord.utils.format_dt((datetime.datetime.now() + datetime.timedelta(weeks=4)), style='R') if offer == 'monthly' else ''}", view=view)
