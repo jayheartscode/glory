@@ -24,7 +24,7 @@ class InstagramPaginatorView(discord.ui.View):
       self.ctx = ctx
       self.i = 0
 
-    @discord.ui.button(emoji="<:left:1018156480991612999>", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(emoji="<:glory_previous:1316974948174135337>", style=discord.ButtonStyle.blurple)
     async def left(self, interaction: discord.Interaction, button: discord.ui.Button): 
       if interaction.user.id != self.ctx.author.id: return await interaction.client.ext.send_warning(interaction, "You are not the author of this embed")          
       if self.i == 0: 
@@ -36,7 +36,7 @@ class InstagramPaginatorView(discord.ui.View):
       attachments = [discord.File(fp=await self.bot.getbyte(self.files[self.i][1]), filename="instagram.mp4")] if self.files[self.i][0] == "video" else [discord.File(fp=await self.bot.getbyte(self.files[self.i][1]), filename="instagram.png")]
       return await interaction.response.edit_message(embed=self.embeds[self.i], attachments=attachments)
 
-    @discord.ui.button(emoji="<:right:1018156484170883154>", style=discord.ButtonStyle.blurple)
+    @discord.ui.button(emoji="<:glory_next:1316974950292394004>", style=discord.ButtonStyle.blurple)
     async def right(self, interaction: discord.Interaction, button: discord.ui.Button): 
       if interaction.user.id != self.ctx.author.id: return await interaction.client.ext.send_warning(interaction, "You are not the author of this embed")     
       if self.i == len(self.embeds)-1: 
@@ -48,7 +48,7 @@ class InstagramPaginatorView(discord.ui.View):
       att = attachments = [discord.File(fp=await self.bot.getbyte(self.files[self.i][1]), filename="instagram.mp4")] if self.files[self.i][0] == "video" else [discord.File(fp=await self.bot.getbyte(self.files[self.i][1]), filename="instagram.png")]
       return await interaction.response.edit_message(embed=self.embeds[self.i], attachments=att)   
  
-    @discord.ui.button(emoji="<:filter:1039235211789078628>")
+    @discord.ui.button(emoji="<:glory_navigate:1316974952460714034>")
     async def goto(self, interaction: discord.Interaction, button: discord.ui.Button): 
      if interaction.user.id != self.ctx.author.id: return await interaction.client.ext.send_warning(interaction, "You are not the author of this embed")     
      modal = GoToModal()
@@ -61,7 +61,7 @@ class InstagramPaginatorView(discord.ui.View):
       self.i = int(modal.page.value)-1
      except: pass 
     
-    @discord.ui.button(emoji="<:stop:1018156487232720907>", style=discord.ButtonStyle.danger)
+    @discord.ui.button(emoji="<:glory_cancel:1316934518757916754>", style=discord.ButtonStyle.danger)
     async def delete(self, interaction: discord.Interaction, button: discord.ui.Button): 
       if interaction.user.id != self.ctx.author.id: return await interaction.client.ext.send_warning(interaction, "You are not the author of this embed")     
       await interaction.message.delete()
